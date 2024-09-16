@@ -23,6 +23,7 @@ public class Die {
     /**
      * Constructor for the Die class
      * @param sides The number of sides.
+     * @throws IllegalArgumentException If the sides were outsides of the ranges.
      */
     public Die(int sides) {
         if (sides > MAX_VALUE || sides < MIN_VALUE) {
@@ -47,8 +48,7 @@ public class Die {
     public int getCurrentValue() {
         if (this.currentValue == 0) {
             System.out.println(this.currentValue);
-            throw new DieNotRolledException("The die was either not rolled " +
-                    "or was outside of the range.");
+            throw new DieNotRolledException();
         }
         int temp = this.currentValue;
         this.currentValue = 0;

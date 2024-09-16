@@ -26,10 +26,6 @@ public class Driver {
         Scanner sc = new Scanner(System.in);
         System.out.print("Example: ");
         String[] config = sc.nextLine().split(" ");
-        if (config.length != 3)
-        {
-            // TODO: throw exception.
-        }
         int[] intConfig = new int[3];
         for (int i = 0; i < config.length; i++) {
             intConfig[i] = Integer.parseInt(config[i]);
@@ -60,7 +56,7 @@ public class Driver {
         }
         return results;
     }
-    private static int findMax(int[] rolls){
+    private static int findMax(int[] rolls) {
         int max = 0;
         for (int count : rolls) {
             if (count > max) {

@@ -7,8 +7,18 @@
  */
 package mirzaa;
 
+/**
+ * The Exception if the Die was not rolled.
+ */
 public class DieNotRolledException extends RuntimeException {
-    public DieNotRolledException(String errorMessage) {
-        super(errorMessage);
+
+    /**
+     * Provides an error message for this exception.
+     *
+     * @return A string that contains the error messages
+     */
+    @Override
+    public String getMessage() {
+        return "Die has not been rolled yet";
     }
 }
