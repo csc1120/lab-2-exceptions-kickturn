@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="lab-2-exceptions-kickturn:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab_2_exceptions_kickturn_jar</output-path>
+    <root id="archive" name="lab-2-exceptions-kickturn.jar">
+      <element id="module-output" name="lab-2-exceptions-kickturn" />
+      <element id="dir-copy" path="$PROJECT_DIR$/../../../../Program Files/Java/javafx-sdk-22.0.2/bin" />
+    </root>
+  </artifact>
+</component>
