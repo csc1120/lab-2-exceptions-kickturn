@@ -7,6 +7,7 @@
  */
 package mirzaa;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Driver {
@@ -15,6 +16,11 @@ public class Driver {
         System.out.println("and how many rolls to complete, separating the values by a space");
         int[] config = getInput();
         Die[] dices = createDice(config[0], config[1]);
+        int[] freq = rollDice(dices, config[1], config[2]);
+        System.out.println(Arrays.toString(freq));
+        int max = findMax(freq);
+        report(config[0], freq, max);
+
     }
     public static int[] getInput() {
         Scanner sc = new Scanner(System.in);
@@ -39,7 +45,46 @@ public class Driver {
         }
         return dies;
     }
-//    public int[] rollDice(int numDice, int numSides) {}
-//    public int findMax(int[] rolls) {}
-//    public void report(int numDice, int[] rolls, int max) {}
+    public static int[] rollDice(Die[] dices, int numSides, int numRolls) {
+        int maxSum = dices.length * numSides;
+        int minSum = dices.length;
+        int[] results = new int[maxSum - minSum + 1];
+        for (int i = 0; i < numRolls; i++)
+        {
+            int total = 0;
+            for (Die dice : dices) {
+                dice.roll();
+                total += dice.getCurrentValue();
+            }
+            results[total - minSum] = results[total- minSum] + 1;
+        }
+        return results;
+    }
+    private static int findMax(int[] rolls){
+        int max = 0;
+        for (int count : rolls) {
+            if (count > max) {
+                max = count;
+            }
+        }
+        return max;
+    }
+
+    private static void report(int numDice, int[] rolls, int max) {
+        int scale = max / 10;
+
+        for (int i = 0; i < rolls.length; i++) {
+            int sum = i + numDice;
+
+            int numStars = rolls[i] / scale;
+
+            String stars = "*".repeat(numStars);
+
+            if (sum < 10) {
+                System.out.printf("%d :%5d %s%n", sum, rolls[i], stars);
+            } else {
+                System.out.printf("%d:%5d %s%n", sum, rolls[i], stars);
+            }
+        }
+    }
 }

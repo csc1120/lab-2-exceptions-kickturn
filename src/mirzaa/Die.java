@@ -23,10 +23,12 @@ public class Die {
         this.numSides = sides;
     }
     public void roll() {
-        this.currentValue = random.nextInt(100,MIN_VALUE) + MIN_VALUE;
+//        System.out.println(numSides);
+        this.currentValue = random.nextInt(numSides) + 1;
     }
     public int getCurrentValue() {
-        if (this.currentValue > numSides || this.currentValue < MIN_VALUE) {
+        if (this.currentValue == 0) {
+            System.out.println(this.currentValue);
             throw new DieNotRolledException("The die was either not rolled or was outside of the range.");
         }
         int temp = this.currentValue;
