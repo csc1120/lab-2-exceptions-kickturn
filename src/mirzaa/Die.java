@@ -13,11 +13,17 @@ import java.util.Random;
  * The Die class. This holds a Die that we can roll and get its current value.
  */
 public class Die {
-    private final int numSides;
-    private int currentValue = 0;
     private static final int MAX_VALUE = 100;
     private static final int MIN_VALUE = 2;
+
+    private final int numSides;
+    private int currentValue = 0;
     private final Random random = new Random();
+
+    /**
+     * Constructor for the Die class
+     * @param sides The number of sides.
+     */
     public Die(int sides) {
         if (sides > MAX_VALUE || sides < MIN_VALUE) {
             throw new IllegalArgumentException("The number of sides" +
@@ -30,7 +36,6 @@ public class Die {
      * This gives us a random integer from 1 to numSides
      */
     public void roll() {
-//        System.out.println(numSides);
         this.currentValue = random.nextInt(numSides) + 1;
     }
 
@@ -42,7 +47,8 @@ public class Die {
     public int getCurrentValue() {
         if (this.currentValue == 0) {
             System.out.println(this.currentValue);
-            throw new DieNotRolledException("The die was either not rolled or was outside of the range.");
+            throw new DieNotRolledException("The die was either not rolled " +
+                    "or was outside of the range.");
         }
         int temp = this.currentValue;
         this.currentValue = 0;
