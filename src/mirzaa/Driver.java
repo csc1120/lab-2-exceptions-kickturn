@@ -18,7 +18,7 @@ public class Driver {
         System.out.println("Please enter the number of dice to roll, " +
                 "how many sides the dice have,");
         System.out.println("and how many rolls to complete, " +
-                "   separating the values by a space");
+                "separating the values by a space");
         int[] config = getInput();
         Die[] dices = createDice(config[0], config[1]);
         int[] freq = rollDice(dices, config[1], config[2]);
@@ -37,9 +37,16 @@ public class Driver {
         Scanner sc = new Scanner(System.in);
         System.out.print("Example: ");
         String[] config = sc.nextLine().split(" ");
+        if (config.length != 3) {
+            throw new IllegalArgumentException("Expected 3 values but only received 2");
+        }
         int[] intConfig = new int[3];
         for (int i = 0; i < config.length; i++) {
-            intConfig[i] = Integer.parseInt(config[i]);
+            try {
+                intConfig[i] = Integer.parseInt(config[i]);
+            } catch (NumberFormatException e) {
+                throw new RuntimeException("Invalid input: All values must be whole numbers.");
+            }
         }
 
         return intConfig;
@@ -52,6 +59,7 @@ public class Driver {
      * @return An array of dies.
      */
     public static Die[] createDice(int numDice, int numSides) {
+
         Die[] dies = new Die[numDice];
         for (int i = 0; i < numDice; i++) {
             dies[i] = new Die(numSides);
