@@ -40,7 +40,8 @@ public class Driver {
         System.out.print("Example: ");
         String[] config = sc.nextLine().split(" ");
         if (config.length != 3) {
-            throw new IllegalArgumentException("Expected 3 values but only received " + config.length);
+            throw new IllegalArgumentException("Expected 3 values but only received "
+                    + config.length);
         }
         int[] intConfig = new int[3];
         for (int i = 0; i < config.length; i++) {
