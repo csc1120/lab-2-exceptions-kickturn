@@ -83,7 +83,7 @@ public class Driver {
 
     /**
      * The max result of which value was rolled the most.
-     * @param rolls
+     * @param rolls The number of rolls rolled.
      * @return The max results of which value was rolled the most.
      */
     private static int findMax(int[] rolls) {
@@ -103,8 +103,8 @@ public class Driver {
      * @param max The max value from max().
      */
     private static void report(int numDice, int[] rolls, int max) {
-        final int SCALE_NUM = 10;
-        int scale = max / SCALE_NUM;
+        final int scaleNum = 10;
+        int scale = max / scaleNum;
 
         for (int i = 0; i < rolls.length; i++) {
             int sum = i + numDice;
@@ -113,7 +113,7 @@ public class Driver {
 
             String stars = "*".repeat(numStars);
 
-            if (sum < SCALE_NUM) {
+            if (sum < scaleNum) {
                 System.out.printf("%d :%5d %s%n", sum, rolls[i], stars);
             } else {
                 System.out.printf("%d:%5d %s%n", sum, rolls[i], stars);
