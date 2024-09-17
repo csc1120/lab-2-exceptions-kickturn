@@ -10,10 +10,15 @@ package mirzaa;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * The Driver class to use our programs and the Die class.
+ */
 public class Driver {
     public static void main(String[] args) {
-        System.out.println("Please enter the number of dice to roll, how many sides the dice have,");
-        System.out.println("and how many rolls to complete, separating the values by a space");
+        System.out.println("Please enter the number of dice to roll, " +
+                "how many sides the dice have,");
+        System.out.println("and how many rolls to complete, " +
+                "   separating the values by a space");
         int[] config = getInput();
         Die[] dices = createDice(config[0], config[1]);
         int[] freq = rollDice(dices, config[1], config[2]);
@@ -22,6 +27,12 @@ public class Driver {
         report(config[0], freq, max);
 
     }
+
+    /**
+     * Gets the input and outputs an array that gives the configuration.
+     * @return an array containg three numbers that will be used to
+     * creating the dies.
+     */
     public static int[] getInput() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Example: ");
@@ -33,6 +44,13 @@ public class Driver {
 
         return intConfig;
     }
+
+    /**
+     * Creates an array of dies depending on how many dies.
+     * @param numDice The number of dices to create
+     * @param numSides The number of sides on dices.
+     * @return An array of dies.
+     */
     public static Die[] createDice(int numDice, int numSides) {
         Die[] dies = new Die[numDice];
         for (int i = 0; i < numDice; i++)
@@ -41,6 +59,14 @@ public class Driver {
         }
         return dies;
     }
+
+    /**
+     * The frequencies of each result from how many times it's rollde.
+     * @param dices The dices in the arrays
+     * @param numSides The number of sides of each die.
+     * @param numRolls How many times to roll each dice
+     * @return The frequencies of each results.
+     */
     public static int[] rollDice(Die[] dices, int numSides, int numRolls) {
         int maxSum = dices.length * numSides;
         int minSum = dices.length;
@@ -56,6 +82,12 @@ public class Driver {
         }
         return results;
     }
+
+    /**
+     * The max result of which value was rolled the most.
+     * @param rolls
+     * @return The max results of which value was rolled the most.
+     */
     private static int findMax(int[] rolls) {
         int max = 0;
         for (int count : rolls) {
@@ -66,6 +98,12 @@ public class Driver {
         return max;
     }
 
+    /**
+     * Prints out all the report of the credits' frequencies.
+     * @param numDice The number of dices rolled
+     * @param rolls How many rolls it dones.
+     * @param max The max value from max().
+     */
     private static void report(int numDice, int[] rolls, int max) {
         int scale = max / 10;
 
