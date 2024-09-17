@@ -53,8 +53,7 @@ public class Driver {
      */
     public static Die[] createDice(int numDice, int numSides) {
         Die[] dies = new Die[numDice];
-        for (int i = 0; i < numDice; i++)
-        {
+        for (int i = 0; i < numDice; i++) {
             dies[i] = new Die(numSides);
         }
         return dies;
@@ -71,8 +70,7 @@ public class Driver {
         int maxSum = dices.length * numSides;
         int minSum = dices.length;
         int[] results = new int[maxSum - minSum + 1];
-        for (int i = 0; i < numRolls; i++)
-        {
+        for (int i = 0; i < numRolls; i++) {
             int total = 0;
             for (Die dice : dices) {
                 dice.roll();
@@ -105,7 +103,8 @@ public class Driver {
      * @param max The max value from max().
      */
     private static void report(int numDice, int[] rolls, int max) {
-        int scale = max / 10;
+        final int SCALE_NUM = 10;
+        int scale = max / SCALE_NUM;
 
         for (int i = 0; i < rolls.length; i++) {
             int sum = i + numDice;
@@ -114,7 +113,7 @@ public class Driver {
 
             String stars = "*".repeat(numStars);
 
-            if (sum < 10) {
+            if (sum < SCALE_NUM) {
                 System.out.printf("%d :%5d %s%n", sum, rolls[i], stars);
             } else {
                 System.out.printf("%d:%5d %s%n", sum, rolls[i], stars);
