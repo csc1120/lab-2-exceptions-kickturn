@@ -31,6 +31,8 @@ public class Driver {
     /**
      * Gets the input and outputs an array that gives the configuration.
      * @return an array containg three numbers that will be used to
+     * @throws IllegalArgumentException If the values given aren't three.
+     * @throws NumberFormatException If the numbers in the input are not integer.
      * creating the dies.
      */
     public static int[] getInput() {
@@ -38,14 +40,14 @@ public class Driver {
         System.out.print("Example: ");
         String[] config = sc.nextLine().split(" ");
         if (config.length != 3) {
-            throw new IllegalArgumentException("Expected 3 values but only received 2");
+            throw new IllegalArgumentException("Expected 3 values but only received " + config.length);
         }
         int[] intConfig = new int[3];
         for (int i = 0; i < config.length; i++) {
             try {
                 intConfig[i] = Integer.parseInt(config[i]);
             } catch (NumberFormatException e) {
-                throw new RuntimeException("Invalid input: All values must be whole numbers.");
+                throw new NumberFormatException("Invalid input: All values must be whole numbers.");
             }
         }
 
